@@ -1,6 +1,6 @@
 {
   "name": "@ali/tbdx-dateFormat",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "迷你时间格式化 - 淘宝大学",
   "main": "build/index.js",
   "scripts": {
@@ -19,15 +19,15 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.4.5",
     "autoprefixer": "^9.4.3",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.4",
-    "babel-preset-env": "^1.7.0",
-    "html-webpack-plugin": "^3.2.0",
     "clean-webpack-plugin": "^1.0.0",
-    "webpack-md5-hash": "^0.0.6",
+    "html-webpack-plugin": "^3.2.0",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.1",
+    "webpack-md5-hash": "^0.0.6",
     "webpack-node-externals": "^1.7.2"
   }
 }
