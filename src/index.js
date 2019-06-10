@@ -2,7 +2,7 @@
  * @Author: ll36
  * @Date: 2018/03/20 15:29
  * @Last Modified by: ll36
- * @Last Modified time: 2019-06-10 18:16:27
+ * @Last Modified time: 2019-06-10 18:34:29
  * @Desc: 根据fmt格式,字符串类型的时间 */
 
 /**
@@ -139,7 +139,10 @@ export const timeFormat = (time, fmt) => {
   }
   for (const k in p) {
     if (new RegExp(`(${k})`).test(fmt)) {
-      fmt = fmt.replace(RegExp.$1, p[k])
+      fmt = fmt.replace(
+        RegExp.$1,
+        RegExp.$1.length == 1 ? p[k] : `00${p[k]}`.substr(`${p[k]}`.length)
+      )
     }
   }
   return fmt
