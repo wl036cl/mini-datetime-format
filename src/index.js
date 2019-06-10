@@ -2,7 +2,7 @@
  * @Author: ll36
  * @Date: 2018/03/20 15:29
  * @Last Modified by: ll36
- * @Last Modified time: 2019-04-23 20:45:46
+ * @Last Modified time: 2019-06-10 18:16:27
  * @Desc: 根据fmt格式,字符串类型的时间 */
 
 /**
@@ -12,16 +12,15 @@
  * @returns 根据fmt格式,字符串类型的日期时间
  */
 function dateFormat(date, fmt) {
-  if (!date) {
+  if (!date || !fmt) {
     return ''
   }
   if (typeof date !== 'object') {
     // 将yyyy-MM-dd转化成yyyy/MM/dd（兼容IE）
     // 将yyyy年MM月dd日转化成yyyy/MM/dd
-    date =
-      !Number(date)
-        ? date.replace(new RegExp(/(-|年|月)/gm), '/').replace('日', '/')
-        : Number(date)
+    date = !Number(date)
+      ? date.replace(new RegExp(/(-|年|月)/gm), '/').replace('日', '/')
+      : Number(date)
     const newDate = new Date(date)
     if (newDate.getDate()) {
       // 判断是否转成功
@@ -101,6 +100,9 @@ function dateFormat(date, fmt) {
 export const timeFormat = (time, fmt) => {
   const maxDates = 30
   let date = ''
+  if (!time || !fmt) {
+    return ''
+  }
   if (Number(time)) {
     time = Number(time)
     if (!time || time < 0 || time > maxDates * 24 * 60 * 60) return time
