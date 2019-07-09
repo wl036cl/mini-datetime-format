@@ -1,14 +1,14 @@
 // webpack v4
 const path = require('path')
-// update 23.12.2018
 const nodeExternals = require('webpack-node-externals')
 // const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 // const HtmlWebpackPlugin = require('html-webpack-plugin')
 // const WebpackMd5Hash = require('webpack-md5-hash')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 module.exports = {
+	mode: "production",
   entry: {
-    //  main: './src/index.js'
+    //  index: './src/index.js'
     index: path.resolve(__dirname, './src/index.js')
   },
   output: {
