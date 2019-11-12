@@ -81,7 +81,7 @@ tbdx-dateFormat
  * @param {string} fmt eg: hh:mm:ss H M S
  * @returns 根据fmt格式,字符串类型的时间
  */
-import dateFormat,{timeFormat} from ‘@ali/dateFormat-tbdx’
+import dateFormat,{timeFormat} from ‘@ali/tbdx-dateFormat’
 
 
 return (
