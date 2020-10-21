@@ -2,7 +2,7 @@
  * @Author: ll36
  * @Date: 2018/03/20 15:29
  * @Last Modified by: ll36
- * @Last Modified time: 2019-06-10 18:34:29
+ * @Last Modified time: 2020-10-21 09:55:23
  * @Desc: 根据fmt格式,字符串类型的时间 */
 
 /**
@@ -19,7 +19,7 @@ function dateFormat(date, fmt) {
     // 将yyyy-MM-dd转化成yyyy/MM/dd（兼容IE）
     // 将yyyy年MM月dd日转化成yyyy/MM/dd
     date = !Number(date)
-      ? date.replace(new RegExp(/(-|年|月)/gm), '/').replace('日', '/')
+      ? date.replace(new RegExp(/(-|年|月)/gm), '/').replace('日', '')
       : Number(date)
     const newDate = new Date(date)
     if (newDate.getDate()) {

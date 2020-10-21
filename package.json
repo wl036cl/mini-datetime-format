@@ -1,6 +1,6 @@
 {
   "name": "@ali/tbdx-dateFormat",
-  "version": "1.0.7-beta",
+  "version": "1.0.8",
   "description": "迷你时间格式化 - 淘宝大学",
   "main": "build/index.js",
   "scripts": {
