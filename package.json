@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.alibaba-inc.com:tbdx-npm/tbdx-react-videox.git"
+    "url": "git@gitlab.alibaba-inc.com:tbdx-npm/tbdx-dateFormt.git"
   },
   "author": "ll36",
   "license": "ISC",
