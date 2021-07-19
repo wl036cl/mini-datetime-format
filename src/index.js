@@ -36,7 +36,7 @@ function dateFormat(date, fmt) {
     'H+': date.getHours(), // 小时
     'm+': date.getMinutes(), // 分
     's+': date.getSeconds(), // 秒
-    'q+': Math.floor((date.getMonth() + 3) / 3) // 季度
+    'q+': Math.floor((date.getMonth() + 3) / 3), // 季度
   }
   const week = {
     0: '日',
@@ -45,13 +45,13 @@ function dateFormat(date, fmt) {
     3: '三',
     4: '四',
     5: '五',
-    6: '六'
+    6: '六',
   }
   const apm = {
     a: ['am', 'pm'],
     A: ['AM', 'PM'],
     aa: ['上', '下'],
-    AA: ['上午', '下午']
+    AA: ['上午', '下午'],
   }
   if (/(y+)/.test(fmt)) {
     fmt = fmt.replace(
@@ -115,19 +115,19 @@ export const timeFormat = (time, fmt) => {
   let result = dateFormat(date, 'd:H:m:s')
   // console.log('result', result)
   if (!/^\w+:\w+:\w+:\w+$/.test(result)) return time
-  result = result.split(':').map(i => Number(i))
+  result = result.split(':').map((i) => Number(i))
   // console.log(result)
   const o = {
     'd+': result[0] - 1, // 日
     'h+': result[1], // 小时
     'm+': result[2], // 分
-    's+': result[3] // 秒
+    's+': result[3], // 秒
   }
   // console.log('o', o)
   const p = {
     'H+': o['d+'] * 24 + o['h+'], // 小时
     'M+': (o['d+'] * 24 + o['h+']) * 60 + o['m+'], // 分
-    'S+': ((o['d+'] * 24 + o['h+']) * 60 + o['m+']) * 60 + o['s+'] // 秒
+    'S+': ((o['d+'] * 24 + o['h+']) * 60 + o['m+']) * 60 + o['s+'], // 秒
   }
   for (const k in o) {
     if (new RegExp(`(${k})`).test(fmt)) {
