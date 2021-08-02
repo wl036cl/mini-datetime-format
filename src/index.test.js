@@ -46,6 +46,24 @@ test(
   }
 )
 test(
+  '2021-1-12 23:59:01 改格式为：yyyy-MM-dd HH:mm:ss ee；结果：' +
+    dateFormat('2021-1-12 23:59:01', 'yyyy-MM-dd HH:mm:ss ee'),
+  () => {
+    expect(dateFormat('2021-1-12 23:59:01', 'yyyy-MM-dd HH:mm:ss ee')).toBe(
+      '2021-01-12 23:59:01 Tuesday'
+    )
+  }
+)
+test(
+  '2021-1-12 23:59:01 改格式为：yyyy/M/d e H:m:s；结果：' +
+    dateFormat('2021-1-12 23:59:01', 'yyyy/M/d e H:m:s'),
+  () => {
+    expect(dateFormat('2021-1-12 23:59:01', 'yyyy/M/d e H:m:s')).toBe(
+      '2021/1/12 Tues 23:59:1'
+    )
+  }
+)
+test(
   '2021-1-12 23:59:01 改格式为：yyyy年M月d日 AA h:m:s EEE；结果：' +
     dateFormat('2021-1-12 23:59:01', 'yyyy年M月d日 AA h:m:s EEE'),
   () => {
@@ -55,14 +73,14 @@ test(
   }
 )
 test(
-  '2021-1-12 23:59:01.009 获取当前秒；结果：' +
+  '2021-1-12 23:59:01.009 获取当前秒（s.SS）；结果：' +
     dateFormat('2021-1-12 23:59:01:009', 's.SS'),
   () => {
     expect(dateFormat('2021-1-12 23:59:01:009', 's.SS')).toBe('1.009')
   }
 )
 test(
-  '2021-1-12 23:59:01.099 获取当前毫秒；结果：' +
+  '2021-1-12 23:59:01.099 获取当前毫秒（S）；结果：' +
     dateFormat('2021-1-12 23:59:01:099', 'S'),
   () => {
     expect(dateFormat('2021-1-12 23:59:01:099', 'S')).toBe('99')
@@ -95,6 +113,20 @@ test(
     dateFormat('2021-1-12 23:59:01', 'AA'),
   () => {
     expect(dateFormat('2021-1-12 23:59:01', 'AA')).toBe('下午')
+  }
+)
+test(
+  '2021-1-12 23:59:01 获取当日星期几（e）；结果：' +
+    dateFormat('2021-1-12 23:59:01', 'e'),
+  () => {
+    expect(dateFormat('2021-1-12 23:59:01', 'e')).toBe('Tues')
+  }
+)
+test(
+  '2021-1-12 23:59:01 获取当日星期几（ee）；结果：' +
+    dateFormat('2021-1-12 23:59:01', 'ee'),
+  () => {
+    expect(dateFormat('2021-1-12 23:59:01', 'ee')).toBe('Tuesday')
   }
 )
 test(

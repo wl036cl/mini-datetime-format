@@ -39,13 +39,13 @@ function dateFormat(date, fmt) {
     'q+': Math.floor((date.getMonth() + 3) / 3), // 季度
   }
   const week = {
-    0: '日',
-    1: '一',
-    2: '二',
-    3: '三',
-    4: '四',
-    5: '五',
-    6: '六',
+    0: ['日', 'Sun', 'Sunday'],
+    1: ['一', 'Mon', 'Monday'],
+    2: ['二', 'Tues', 'Tuesday'],
+    3: ['三', 'Wed', 'Wednesday'],
+    4: ['四', 'Thur', 'Thursday'],
+    5: ['五', 'Fri', 'Friday'],
+    6: ['六', 'Sat', 'Saturday'],
   }
   const apm = {
     a: ['am', 'pm'],
@@ -59,13 +59,7 @@ function dateFormat(date, fmt) {
       `${date.getFullYear()}`.substr(4 - RegExp.$1.length)
     )
   }
-  if (/(E+)/.test(fmt)) {
-    fmt = fmt.replace(
-      RegExp.$1,
-      (RegExp.$1.length > 1 ? (RegExp.$1.length > 2 ? '星期' : '周') : '') +
-        week[`${date.getDay()}`]
-    )
-  }
+
   if (/(S+)/.test(fmt)) {
     let millSeconds = date.getMilliseconds()
     if (RegExp.$1.length > 1) {
@@ -87,6 +81,20 @@ function dateFormat(date, fmt) {
   // 防止M被上面当月份处理
   if (/(a+)/.test(fmt) || /(A+)/.test(fmt)) {
     fmt = fmt.replace(RegExp.$1, apm[RegExp.$1][date.getHours() >= 12 ? 1 : 0])
+  }
+  // 防止星期英文字母被格式转换
+  if (/(e+)/.test(fmt)) {
+    fmt = fmt.replace(
+      RegExp.$1,
+      week[`${date.getDay()}`][RegExp.$1.length > 1 ? 2 : 1]
+    )
+  }
+  if (/(E+)/.test(fmt)) {
+    fmt = fmt.replace(
+      RegExp.$1,
+      (RegExp.$1.length > 1 ? (RegExp.$1.length > 2 ? '星期' : '周') : '') +
+        week[`${date.getDay()}`][0]
+    )
   }
   return fmt
 }
