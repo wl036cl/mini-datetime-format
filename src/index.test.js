@@ -206,3 +206,51 @@ test(
     expect(timeFormat('2:09:59', 'S')).toBe('7799')
   }
 )
+
+test(
+  '24:09:59 改格式为S；结果：' + timeFormat('24:09:59', 'S'),
+  () => {
+    expect(timeFormat('24:09:59', 'S')).toBe('86999')
+  }
+)
+
+test(
+  '24:09:59 改格式为S；结果：' + timeFormat('24:09:59', 'd天h小时m分s秒'),
+  () => {
+    expect(timeFormat('24:09:59', 'd天h小时m分s秒')).toBe('1天0小时9分59秒')
+  }
+)
+
+test(
+  '9:59 改格式为S；结果：' + timeFormat('9:59', 'S'),
+  () => {
+    expect(timeFormat('9:59', 'S')).toBe('599')
+  }
+)
+
+test(
+  '09:59 改格式为S；结果：' + timeFormat('09:59', 'S'),
+  () => {
+    expect(timeFormat('09:59', 'S')).toBe('599')
+  }
+)
+
+test(
+  '59:59 改格式为S；结果：' + timeFormat('59:59', 'S'),
+  () => {
+    expect(timeFormat('59:59', 'S')).toBe('3599')
+  }
+)
+
+test(
+  '69:59 改格式为S；结果：' + timeFormat('69:59', 'S'),
+  () => {
+    expect(timeFormat('69:59', 'S')).toBe('4199')
+  }
+)
+test(
+  '169:09 改格式为S；结果：' + timeFormat('169:09', 'S'),
+  () => {
+    expect(timeFormat('169:09', 'S')).toBe('10149')
+  }
+)

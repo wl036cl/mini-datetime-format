@@ -116,12 +116,36 @@ export const timeFormat = (time, fmt) => {
     if (!time || time < 0 || time > maxDates * 24 * 60 * 60) return time
     date = new Date('2019/1/1').getTime() + time * 1000
   } else if (/^\w+:\w+:\w+$/.test(time)) {
-    date = new Date('2019/1/1' + ' ' + time).getTime()
+    let arr = time.split(':')
+    let day = 0
+    // 小时数大于或等于24
+    if (arr[0] >= 24) {
+      day = Math.floor(Number(arr[0] / 24))
+      arr[0] = (Number(arr[0]) % 24).toString()
+    }
+    if (day > 0) {
+      date = new Date(`2019/1/${day + 1} ${arr.join(':')}`).getTime()
+    } else {
+      date = new Date(`2019/1/1 ${time}`).getTime()
+    }
+    if (!date) return time
+  } else if (/^\w+:\w+$/.test(time)) {
+    let arr = time.split(':')
+    let hour = 0
+    // 分钟数大于或等于60（且得小于1440分钟，不然会超过1天）
+    if (arr[0] >= 60) {
+      hour = Math.floor(Number(arr[0] / 60))
+      arr[0] = (Number(arr[0]) % 60).toString()
+    }
+    if (hour > 0) {
+      date = new Date(`2019/1/1 ${hour}:${arr.join(':')}`).getTime()
+    } else {
+      date = new Date('2019/1/1' + ' 0:' + time).getTime()
+    }
     if (!date) return time
   }
   // console.log('date', date)
   let result = dateFormat(date, 'd:H:m:s')
-  // console.log('result', result)
   if (!/^\w+:\w+:\w+:\w+$/.test(result)) return time
   result = result.split(':').map((i) => Number(i))
   // console.log(result)
