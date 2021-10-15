@@ -1,6 +1,6 @@
-import dateFormat, { timeFormat } from './index'
-// var dateFormat = require('../build/index.js').default
-// var timeFormat = require('../build/index.js').timeFormat
+// import dateFormat, { timeFormat } from './index'
+var dateFormat = require('../build/index.js').default
+var timeFormat = require('../build/index.js').timeFormat
 // 日期修改
 const date = new Date()
 test(
