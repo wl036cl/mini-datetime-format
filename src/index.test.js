@@ -1,4 +1,6 @@
 import dateFormat, { timeFormat } from './index'
+// var dateFormat = require('../build/index.js').default
+// var timeFormat = require('../build/index.js').timeFormat
 // 日期修改
 const date = new Date()
 test(
@@ -152,12 +154,9 @@ test(
 )
 
 // 时间修改
-test(
-  '7799.011 改格式为h:m:s；结果：' + timeFormat('7799.011', 'h:m:s'),
-  () => {
-    expect(timeFormat('7799.011', 'h:m:s')).toBe('2:9:59')
-  }
-)
+test('7799.011 改格式为h:m:s；结果：' + timeFormat('7799.011', 'h:m:s'), () => {
+  expect(timeFormat('7799.011', 'h:m:s')).toBe('2:9:59')
+})
 test(
   '7799.011 改格式为hh:mm:ss；结果：' + timeFormat('7799.011', 'hh:mm:ss'),
   () => {
@@ -165,54 +164,39 @@ test(
   }
 )
 
+test('47949 改格式为h:m:s；结果：' + timeFormat('47949', 'h:m:s'), () => {
+  expect(timeFormat('47949', 'h:m:s')).toBe('13:19:9')
+})
+
 test(
-  '47949 改格式为h:m:s；结果：' + timeFormat('47949', 'h:m:s'),
+  '94199 改格式为d天 hh小时mm分钟ss秒；结果：' +
+    timeFormat('94199', 'd天 hh小时mm分钟ss秒'),
   () => {
-    expect(timeFormat('47949', 'h:m:s')).toBe('13:19:9')
+    expect(timeFormat('94199', 'd天 hh小时mm分钟ss秒')).toBe(
+      '1天 02小时09分钟59秒'
+    )
   }
 )
 
-test(
-  '94199 改格式为d天 hh小时mm分钟ss秒；结果：' + timeFormat('94199', 'd天 hh小时mm分钟ss秒'),
-  () => {
-    expect(timeFormat('94199', 'd天 hh小时mm分钟ss秒')).toBe('1天 02小时09分钟59秒')
-  }
-)
+test('94199 改格式为H:mm:ss；结果：' + timeFormat('94199', 'H:mm:ss'), () => {
+  expect(timeFormat('94199', 'H:mm:ss')).toBe('26:09:59')
+})
 
-test(
-  '94199 改格式为H:mm:ss；结果：' + timeFormat('94199', 'H:mm:ss'),
-  () => {
-    expect(timeFormat('94199', 'H:mm:ss')).toBe('26:09:59')
-  }
-)
+test('94199 改格式为M:ss；结果：' + timeFormat('94199', 'M:ss'), () => {
+  expect(timeFormat('94199', 'M:ss')).toBe('1569:59')
+})
 
-test(
-  '94199 改格式为M:ss；结果：' + timeFormat('94199', 'M:ss'),
-  () => {
-    expect(timeFormat('94199', 'M:ss')).toBe('1569:59')
-  }
-)
+test('2:09:59 改格式为M:s；结果：' + timeFormat('2:09:59', 'M:s'), () => {
+  expect(timeFormat('2:09:59', 'M:s')).toBe('129:59')
+})
 
-test(
-  '2:09:59 改格式为M:s；结果：' + timeFormat('2:09:59', 'M:s'),
-  () => {
-    expect(timeFormat('2:09:59', 'M:s')).toBe('129:59')
-  }
-)
+test('2:09:59 改格式为S；结果：' + timeFormat('2:09:59', 'S'), () => {
+  expect(timeFormat('2:09:59', 'S')).toBe('7799')
+})
 
-test(
-  '2:09:59 改格式为S；结果：' + timeFormat('2:09:59', 'S'),
-  () => {
-    expect(timeFormat('2:09:59', 'S')).toBe('7799')
-  }
-)
-
-test(
-  '24:09:59 改格式为S；结果：' + timeFormat('24:09:59', 'S'),
-  () => {
-    expect(timeFormat('24:09:59', 'S')).toBe('86999')
-  }
-)
+test('24:09:59 改格式为S；结果：' + timeFormat('24:09:59', 'S'), () => {
+  expect(timeFormat('24:09:59', 'S')).toBe('86999')
+})
 
 test(
   '24:09:59 改格式为S；结果：' + timeFormat('24:09:59', 'd天h小时m分s秒'),
@@ -221,36 +205,21 @@ test(
   }
 )
 
-test(
-  '9:59 改格式为S；结果：' + timeFormat('9:59', 'S'),
-  () => {
-    expect(timeFormat('9:59', 'S')).toBe('599')
-  }
-)
+test('9:59 改格式为S；结果：' + timeFormat('9:59', 'S'), () => {
+  expect(timeFormat('9:59', 'S')).toBe('599')
+})
 
-test(
-  '09:59 改格式为S；结果：' + timeFormat('09:59', 'S'),
-  () => {
-    expect(timeFormat('09:59', 'S')).toBe('599')
-  }
-)
+test('09:59 改格式为S；结果：' + timeFormat('09:59', 'S'), () => {
+  expect(timeFormat('09:59', 'S')).toBe('599')
+})
 
-test(
-  '59:59 改格式为S；结果：' + timeFormat('59:59', 'S'),
-  () => {
-    expect(timeFormat('59:59', 'S')).toBe('3599')
-  }
-)
+test('59:59 改格式为S；结果：' + timeFormat('59:59', 'S'), () => {
+  expect(timeFormat('59:59', 'S')).toBe('3599')
+})
 
-test(
-  '69:59 改格式为S；结果：' + timeFormat('69:59', 'S'),
-  () => {
-    expect(timeFormat('69:59', 'S')).toBe('4199')
-  }
-)
-test(
-  '169:09 改格式为S；结果：' + timeFormat('169:09', 'S'),
-  () => {
-    expect(timeFormat('169:09', 'S')).toBe('10149')
-  }
-)
+test('69:59 改格式为S；结果：' + timeFormat('69:59', 'S'), () => {
+  expect(timeFormat('69:59', 'S')).toBe('4199')
+})
+test('169:09 改格式为S；结果：' + timeFormat('169:09', 'S'), () => {
+  expect(timeFormat('169:09', 'S')).toBe('10149')
+})

@@ -1,9 +1,6 @@
 // webpack v4
 const path = require('path')
 const nodeExternals = require('webpack-node-externals')
-// const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-// const HtmlWebpackPlugin = require('html-webpack-plugin')
-// const WebpackMd5Hash = require('webpack-md5-hash')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 module.exports = {
 	mode: "production",
