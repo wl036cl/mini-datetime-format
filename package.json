@@ -1,6 +1,6 @@
 {
-  "name": "@ali/tbdx-dateFormat",
-  "version": "1.1.0",
+  "name": "tbdx-dateformat",
+  "version": "0.1.0",
   "description": "迷你时间格式化 - 淘宝大学",
   "main": "build/index.js",
   "scripts": {
@@ -8,15 +8,13 @@
     "build": "webpack --mode production",
     "test": "jest"
   },
-  "publishConfig": {
-    "registry": "http://registry.npm.alibaba-inc.com"
-  },
   "repository": {
     "type": "git",
     "url": "git@gitlab.alibaba-inc.com:tbdx-npm/tbdx-dateFormat.git"
   },
   "author": "ll36",
   "license": "ISC",
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.14.7",

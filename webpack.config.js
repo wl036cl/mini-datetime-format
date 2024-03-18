@@ -3,13 +3,14 @@ const path = require('path')
 const nodeExternals = require('webpack-node-externals')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 module.exports = {
-	mode: "production",
+  mode: "production",
   entry: {
     //  index: './src/index.js'
     index: path.resolve(__dirname, './src/index.js')
   },
   output: {
-    libraryTarget: 'umd',
+    libraryTarget: 'var',
+    library: 'dateFormat',
     path: path.resolve(__dirname, 'build'),
     filename: '[name].js'
   },
