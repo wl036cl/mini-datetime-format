@@ -9,7 +9,7 @@ module.exports = {
     index: path.resolve(__dirname, './src/index.js')
   },
   output: {
-    libraryTarget: 'var',
+    libraryTarget: 'umd',
     library: 'dateFormat',
     path: path.resolve(__dirname, 'build'),
     filename: '[name].js'
