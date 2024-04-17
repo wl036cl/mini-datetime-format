@@ -53,47 +53,58 @@ function dateFormat(date, fmt) {
     aa: ['上', '下'],
     AA: ['上午', '下午'],
   }
-  if (/((y|Y)+)/.test(fmt)) {
+  let re = /((y|Y)+)/;
+  if (re.test(fmt)) {
+    const t = re.exec(fmt)[1]
     fmt = fmt.replace(
-      RegExp.$1,
-      `${date.getFullYear()}`.substr(4 - RegExp.$1.length)
+      t,
+      `${date.getFullYear()}`.substring(4 - t.length)
     )
   }
-
-  if (/(S+)/.test(fmt)) {
+  re = /(S+)/;
+  if (re.test(fmt)) {
     let millSeconds = date.getMilliseconds()
-    if (RegExp.$1.length > 1) {
+    const t = re.exec(fmt)[1]
+    if (t.length > 1) {
       millSeconds =
         millSeconds > 99
           ? millSeconds
           : (millSeconds > 9 ? '0' : '00') + millSeconds
     }
-    fmt = fmt.replace(RegExp.$1, millSeconds)
+    fmt = fmt.replace(t, millSeconds)
   }
   for (const k in o) {
-    if (new RegExp(`(${k})`).test(fmt)) {
+    re = new RegExp(`(${k})`);
+    if (re.test(fmt)) {
+      const t = re.exec(fmt)[1];
       fmt = fmt.replace(
-        RegExp.$1,
-        RegExp.$1.length == 1 ? o[k] : `00${o[k]}`.substr(`${o[k]}`.length)
+        t,
+        t.length == 1 ? o[k] : `00${o[k]}`.substring(`${o[k]}`.length)
       )
     }
   }
   // 防止M被上面当月份处理
-  if (/(a+)/.test(fmt) || /(A+)/.test(fmt)) {
-    fmt = fmt.replace(RegExp.$1, apm[RegExp.$1][date.getHours() >= 12 ? 1 : 0])
+  re = /((a|A)+)/;
+  if (re.test(fmt)) {
+    const t = re.exec(fmt)[1];
+    fmt = fmt.replace(t, apm[t][date.getHours() >= 12 ? 1 : 0])
   }
   // 防止星期英文字母被格式转换
-  if (/(e+)/.test(fmt)) {
+  re = /(e+)/;
+  if (re.test(fmt)) {
+    const t = re.exec(fmt)[1];
     fmt = fmt.replace(
-      RegExp.$1,
-      week[`${date.getDay()}`][RegExp.$1.length > 1 ? 2 : 1]
+      t,
+      week[`${date.getDay()}`][t.length > 1 ? 2 : 1]
     )
   }
-  if (/(E+)/.test(fmt)) {
+  re = /(E+)/;
+  if (re.test(fmt)) {
+    const t = re.exec(fmt)[1];
     fmt = fmt.replace(
-      RegExp.$1,
-      (RegExp.$1.length > 1 ? (RegExp.$1.length > 2 ? '星期' : '周') : '') +
-        week[`${date.getDay()}`][0]
+      t,
+      (t.length > 1 ? (t.length > 2 ? '星期' : '周') : '') +
+      week[`${date.getDay()}`][0]
     )
   }
   return fmt
@@ -162,18 +173,22 @@ export const timeFormat = (time, fmt) => {
     'S+': ((o['d+'] * 24 + o['h+']) * 60 + o['m+']) * 60 + o['s+'], // 秒
   }
   for (const k in o) {
-    if (new RegExp(`(${k})`).test(fmt)) {
+    const re = new RegExp(`(${k})`);
+    if (re.test(fmt)) {
+      const t = re.exec(fmt)[1];
       fmt = fmt.replace(
-        RegExp.$1,
-        RegExp.$1.length == 1 ? o[k] : `00${o[k]}`.substr(`${o[k]}`.length)
+        t,
+        t.length == 1 ? o[k] : `00${o[k]}`.substring(`${o[k]}`.length)
       )
     }
   }
   for (const k in p) {
-    if (new RegExp(`(${k})`).test(fmt)) {
+    const re = new RegExp(`(${k})`);
+    if (re.test(fmt)) {
+      const t = re.exec(fmt)[1];
       fmt = fmt.replace(
-        RegExp.$1,
-        RegExp.$1.length == 1 ? p[k] : `00${p[k]}`.substr(`${p[k]}`.length)
+        t,
+        t.length == 1 ? p[k] : `00${p[k]}`.substring(`${p[k]}`.length)
       )
     }
   }

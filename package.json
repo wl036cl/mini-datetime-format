@@ -1,6 +1,6 @@
 {
   "name": "mini-datetime-format",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "迷你日期时间格式化",
   "main": "build/index.js",
   "scripts": {
