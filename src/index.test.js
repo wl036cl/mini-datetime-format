@@ -1,6 +1,6 @@
 // import dateFormat, { timeFormat } from './index'
-var dateFormat = require('../build/index.js').default
-var timeFormat = require('../build/index.js').timeFormat
+var dateFormat = require('./index.js').default
+var timeFormat = require('./index.js').timeFormat
 // 日期修改
 const date = new Date()
 test(
@@ -26,6 +26,15 @@ test(
           ? date.getMilliseconds()
           : (date.getMilliseconds() > 9 ? '0' : '00') + date.getMilliseconds()
       }`
+    )
+  }
+)
+test(
+  '2021-1-12 11:59:01 改格式为：YYYY/MM/dd hh:mm:ss；结果：' +
+    dateFormat('2021-1-12 11:59:01', 'YYYY/MM/dd hh:mm:ss'),
+  () => {
+    expect(dateFormat('2021-1-12 11:59:01', 'YYYY/MM/dd hh:mm:ss')).toBe(
+      '2021/01/12 11:59:01'
     )
   }
 )

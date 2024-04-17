@@ -5,6 +5,8 @@ node_modules/
 jsconfig.json
 typings.json
 typings/
+babel.config.json
+jest.config.js
 *~
 ~*
 *.diff

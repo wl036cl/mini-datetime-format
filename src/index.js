@@ -53,7 +53,7 @@ function dateFormat(date, fmt) {
     aa: ['上', '下'],
     AA: ['上午', '下午'],
   }
-  if (/(y+)/.test(fmt)) {
+  if (/((y|Y)+)/.test(fmt)) {
     fmt = fmt.replace(
       RegExp.$1,
       `${date.getFullYear()}`.substr(4 - RegExp.$1.length)
