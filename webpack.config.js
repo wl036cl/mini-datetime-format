@@ -2,6 +2,8 @@
 const path = require('path')
 const nodeExternals = require('webpack-node-externals')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+
 module.exports = {
   mode: "production",
   entry: {
@@ -42,6 +44,12 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin('build', {}),
+    new CopyWebpackPlugin([
+      {
+        from: './src/index.d.ts',
+        to: './',
+      },
+    ]),
     // new MiniCssExtractPlugin({
     //   filename: 'style.[contenthash].css'
     // }),
