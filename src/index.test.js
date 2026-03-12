@@ -1,4 +1,5 @@
 import dateFormat, { timeFormat } from './index'
+const webpackConfig = require('../webpack.config')
 
 describe('dateFormat', () => {
   test('returns empty string when date or fmt missing', () => {
@@ -57,5 +58,20 @@ describe('timeFormat', () => {
   test('supports minute-based format token M', () => {
     const result = timeFormat('90:30', 'M')
     expect(result).toBe('90')
+  })
+
+  test('attaches timeFormat to the default export for CommonJS consumers', () => {
+    expect(dateFormat.timeFormat).toBe(timeFormat)
+    expect(dateFormat.timeFormat(3661, 'hh:mm:ss')).toBe('01:01:01')
+  })
+})
+
+describe('build config', () => {
+  test('uses a universal global object for UMD output', () => {
+    expect(webpackConfig.output.libraryTarget).toBe('umd')
+    expect(webpackConfig.output.libraryExport).toBe('default')
+    expect(webpackConfig.output.globalObject).toBe(
+      'typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : this'
+    )
   })
 })

@@ -13,6 +13,8 @@ module.exports = {
   output: {
     libraryTarget: 'umd',
     library: 'dateFormat',
+    libraryExport: 'default',
+    globalObject: 'typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : this',
     path: path.resolve(__dirname, 'build'),
     filename: '[name].js'
   },

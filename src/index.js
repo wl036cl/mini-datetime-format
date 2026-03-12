@@ -202,4 +202,6 @@ export const timeFormat = (time, fmt) => {
   return fmt
 }
 
+dateFormat.timeFormat = timeFormat
+
 export default dateFormat

@@ -1,4 +1,7 @@
-declare const dateFormat: (date: Date | string | number, fmt: string) => string
+declare const dateFormat: {
+  (date: Date | string | number, fmt: string): string
+  timeFormat: (time: string | number, fmt: string) => string
+}
 
 export declare const timeFormat: (time: string | number, fmt: string) => string
 
