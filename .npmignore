@@ -23,3 +23,5 @@ Thumbs.db
 *.swp
 src/
 webpack.*
+.agents
+AGENTS.md
